@@ -31,6 +31,7 @@ mySprite = sprites.create(assets.image`LINK`, SpriteKind.Player)
 controller.moveSprite(mySprite, 100, 100)
 let dr = sprites.create(assets.image`myImage1`, SpriteKind.Enemy)
 info.setLife(3)
+info.setScore(0)
 let enemyspeed = 50
 mySprite.ay = 1000
 scene.cameraFollowSprite(mySprite)
@@ -39,6 +40,26 @@ scene.setBackgroundImage(assets.image`myImage4`)
 tiles.setCurrentTilemap(tilemap`level`)
 scene.setBackgroundColor(10)
 tiles.placeOnRandomTile(mySprite, sprites.swamp.swampTile0)
+pause(100000)
+let mySprite3 = sprites.create(img`
+    . . . . 4 4 4 4 4 4 4 . . . . . 
+    . . 4 4 5 5 5 5 4 4 5 4 4 . . . 
+    . 4 5 5 5 5 5 4 1 1 4 5 5 4 . . 
+    . 4 5 5 5 5 5 4 1 f 4 5 5 4 . . 
+    4 5 5 5 5 5 5 5 4 4 5 5 5 4 4 . 
+    4 5 5 5 5 5 5 5 5 5 4 4 4 . . . 
+    4 5 5 5 5 5 5 5 4 4 . . . . . . 
+    4 5 5 5 5 5 5 4 . . . . . . . . 
+    4 5 5 5 5 5 5 4 . . . . . . . . 
+    4 5 5 5 5 5 5 5 4 4 . . . . . . 
+    4 5 5 5 5 5 5 5 5 5 4 4 4 . . . 
+    . 4 5 5 5 5 5 5 5 5 5 5 5 4 . . 
+    . 4 5 5 5 5 5 5 5 5 5 5 5 4 . . 
+    . . 4 4 5 5 5 5 5 5 5 4 4 . . . 
+    . . . . 4 4 4 4 4 4 4 . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Player)
+mySprite3.follow(mySprite, 70)
 game.onUpdateInterval(5000, function () {
     dr.setVelocity(enemyspeed, enemyspeed)
     enemyspeed += 1
@@ -96,6 +117,6 @@ forever(function () {
     picture.follow(dr, 35)
     mySprite2.follow(picture, 30)
 })
-game.onUpdateInterval(200, function () {
-    info.changeScoreBy(1)
+game.onUpdateInterval(100, function () {
+	
 })
